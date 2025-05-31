@@ -1,0 +1,48 @@
+Aluno:
+    @ Miguel Eduardo da Silva.
+
+
+A ideia do código foi desenvolvida juntamente com:
+    @ Jeferson Alves.
+
+
+
+
+
+Para o exercício eu preferi percorrer a lista com o for para ser mais visível o numero de paços e o tempo gasta em compilação. E também foi proposital o meu desleixo com a otimização do código.
+
+Na letra A pesquisando o segundo elemento da lista e o elemento de meio de uma lista de 11, 21, 42 O contador apresenta um aumento significativo de passos dados como pode ver na tabela.
+
+| Numero de Elementos | Contador  |
+|---------------------|-----------|
+| 11 Elementos        | 19 passos |
+| 21 Elementos        | 29 passos |
+| 42 Elementos        | 50 passos |
+
+De uma lista de 11 elementos para outra de 42 temos um aumento de 31 passos, como eu utilizo apenas 1 for e não o otimizei, também utilizei 4 condicionais que serão executadas e cada condicional tem 1 parâmetro posso deduzir que o valor de crescimento é de (n + 8). 8 sendo o numero de (condicionais + parâmetros). Agora o que aconteceria se a lista tiver 100 elementos obedecendo a regra do exercício, a lista daria 108 passos, o que é muito para um simples código.
+
+Talvez utilizando um contador não fique tão claro o quão mal otimizado meu código é, então confira a tabela e veja o tempo de execução de cada passo.
+
+| Numero de Elementos | Tempo Gasto |
+|---------------------|-------------|
+| 11 Elementos        | 1908 ms     |
+| 21 Elementos        | 2912 ms     |
+| 42 Elementos        | 5019 ms     |
+
+Mais uma vez podemos ver um aumento de tempo grande para pouco código, comparando 11 elemento com 42 ha uma diferença de mais ou menos 4s. Agora qual o tempo gasto em uma lista de 100 elementos para esse código? O tempo gasto é de 10845ms quase 11s, ou seja um tempo que seria desperdiçado por simples falta de Otimizar o código.
+
+Fiz o código de uma maneira bem mais otimizada, troquei o "for" pelo "try", ou seja ao invés dele procurar se x existe na lista basta colocar o parâmetro direto na lista que se der erro o item não existe, uma simples instrução substituiu uma que cresce de acordo com n. Veja na tabela.
+
+| Numero de Elementos | Contador  |
+|---------------------|-----------|
+| 11 Elementos        | 04 passos |
+| 21 Elementos        | 04 passos |
+| 42 Elementos        | 04 passos |
+
+| Numero de Elementos | Tempo Gasto |
+|---------------------|-------------|
+| 11 Elementos        | 0402 ms     |
+| 21 Elementos        | 0402 ms     |
+| 42 Elementos        | 0402 ms     |
+
+Percebe que agora a dependência de n não existe mais, posso afirmar que a formula que era antes (n + 8) agora é (4), por causa disso, se n=100 o numero de passos sera 4 e o tempo de execução mais ou menos em 402 ms. Bem mais eficiente, Otimizado e limpo.
